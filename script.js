@@ -92,4 +92,21 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    // FAQ Accordion Logic
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const item = question.parentElement;
+            
+            // Close other open faqs
+            document.querySelectorAll('.faq-item').forEach(otherItem => {
+                if(otherItem !== item) {
+                    otherItem.classList.remove('active');
+                }
+            });
+
+            item.classList.toggle('active');
+        });
+    });
 });

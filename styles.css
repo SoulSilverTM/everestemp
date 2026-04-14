@@ -770,57 +770,78 @@ select.form-input option {
 /* --- Projects Gallery --- */
 .projects {
     background-color: var(--bg-card);
-    /* Alternate background */
     border-top: 1px solid rgba(255, 255, 255, 0.02);
 }
 
 .projects-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 15px;
-    margin-top: 30px;
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: 280px;
+    gap: 20px;
+    margin-top: 40px;
 }
 
 .project-item {
-    border-radius: 8px;
+    border-radius: 12px;
     overflow: hidden;
     position: relative;
-    aspect-ratio: 1 / 1;
-    border: 1px solid rgba(255, 255, 255, 0.05);
-    background: var(--bg-dark);
-    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+    border: none;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
     cursor: pointer;
 }
+
+/* Make it a modern "Bento Box" Grid */
+.project-item:nth-child(1) { grid-column: span 2; grid-row: span 2; }
+.project-item:nth-child(4) { grid-column: span 2; }
+.project-item:nth-child(6) { grid-column: span 2; grid-row: span 2; }
 
 .project-item img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    filter: grayscale(100%) contrast(1.2) brightness(0.8);
-    transition: all 0.6s cubic-bezier(0.25, 0.8, 0.25, 1);
+    transition: transform 0.8s cubic-bezier(0.2, 1, 0.3, 1), filter 0.8s ease;
+    filter: brightness(0.85); 
 }
 
 .project-item:hover img {
-    transform: scale(1.15);
-    filter: grayscale(0%) contrast(1) brightness(1);
+    transform: scale(1.1);
+    filter: brightness(1.1);
 }
 
 .project-item::after {
-    content: '';
+    content: '\f0b2';
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    font-size: 2.5rem;
+    color: #fff;
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: var(--accent-primary);
-    mix-blend-mode: overlay;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    background: rgba(92, 172, 196, 0.85);
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     opacity: 0;
-    transition: var(--transition);
+    transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
 }
 
-.project-item:hover::after {
-    opacity: 0.3;
+.project-item::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    z-index: 0;
 }
+
+.project-item:hover::before { opacity: 1; }
+.project-item:hover::after { opacity: 1; transform: translate(-50%, -50%); z-index: 10; }
 
 /* --- Footer --- */
 .footer {
@@ -904,6 +925,143 @@ select.form-input option {
     color: #fff;
 }
 
+/* --- FAQ Section --- */
+.faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.faq-item {
+    background: var(--bg-card);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    overflow: hidden;
+    transition: var(--transition);
+}
+
+.faq-item:hover {
+    border-color: rgba(92, 172, 196, 0.3);
+}
+
+.faq-question {
+    padding: 20px 25px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+    background: var(--bg-card);
+}
+
+.faq-question h4 {
+    font-size: 1.1rem;
+    color: #fff;
+    font-weight: 500;
+}
+
+.faq-question i {
+    color: var(--accent-primary);
+    transition: transform 0.3s ease;
+}
+
+.faq-item.active .faq-question i {
+    transform: rotate(180deg);
+}
+
+.faq-answer {
+    padding: 0 25px;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.4s ease;
+}
+
+.faq-item.active .faq-answer {
+    padding: 0 25px 20px;
+    max-height: 200px;
+}
+
+.faq-answer p {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    padding-top: 15px;
+}
+
+/* --- WhatsApp Float --- */
+.whatsapp-float {
+    position: fixed;
+    width: 60px;
+    height: 60px;
+    bottom: 30px;
+    right: 30px;
+    background-color: #25d366;
+    color: #fff;
+    border-radius: 50px;
+    text-align: center;
+    font-size: 35px;
+    box-shadow: 0px 4px 15px rgba(37, 211, 102, 0.4);
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.3s ease;
+}
+
+.whatsapp-float:hover {
+    transform: scale(1.1) translateY(-5px);
+    color: #fff;
+}
+
+@media (max-width: 768px) {
+    .whatsapp-float {
+        width: 50px;
+        height: 50px;
+        bottom: 20px;
+        right: 20px;
+        font-size: 30px;
+    }
+}
+
+/* --- Safety Section --- */
+.safety-section {
+    background-color: #1a1b1e;
+    color: #ffffff;
+    text-align: center;
+    padding: 5rem 1rem;
+}
+
+.safety-icon {
+    font-size: 3.5rem;
+    color: #f39c12;
+    margin-bottom: 1rem;
+}
+
+.safety-title {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+    color: #ffffff;
+    font-family: var(--font-heading);
+}
+
+.safety-divider {
+    background-color: #f39c12;
+    margin: 1.5rem auto 2rem;
+}
+
+.safety-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    color: #f39c12;
+}
+
+.safety-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #d1d5db;
+    margin-bottom: 1rem;
+}
+
 /* --- Responsive --- */
 @media (max-width: 992px) {
     .hero-title {
@@ -921,6 +1079,14 @@ select.form-input option {
         border-right: none;
         border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
+
+    .projects-grid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-auto-rows: 250px;
+    }
+    .project-item:nth-child(1) { grid-column: span 2; grid-row: span 1; }
+    .project-item:nth-child(4) { grid-column: span 2; }
+    .project-item:nth-child(6) { grid-column: span 2; grid-row: span 1; }
 }
 
 @media (max-width: 768px) {
@@ -962,12 +1128,37 @@ select.form-input option {
         grid-template-columns: 1fr;
     }
 
+    .projects-grid {
+        grid-template-columns: 1fr;
+        grid-auto-rows: 250px;
+    }
+    .project-item:nth-child(n) { 
+        grid-column: span 1; 
+        grid-row: span 1; 
+    }
+
     .contact-form-container {
         padding: 30px 20px;
     }
 
     .contact-info {
         padding: 30px 20px;
+    }
+
+    .safety-icon {
+        font-size: 2.5rem;
+    }
+
+    .safety-title {
+        font-size: 1.8rem;
+    }
+
+    .safety-subtitle {
+        font-size: 1.2rem;
+    }
+
+    .safety-section {
+        padding: 4rem 1rem;
     }
 
     .footer-bottom {
