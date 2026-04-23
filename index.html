@@ -5,13 +5,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Everest Metal Fabrications Ltd | Metal Structures and Roofing</title>
-    <meta name="description"
-        content="Fabrication, design and installation of metal structures for construction and industrial projects. Specialists in roofing and industrial metal.">
+    <meta name="description" content="Fabrication, design and installation of metal structures for construction and industrial projects. Specialists in roofing and industrial metal.">
+    <!-- Open Graph -->
+    <meta property="og:title" content="Everest Metal Fabrications Ltd">
+    <meta property="og:description" content="High-precision design, fabrication, and installation of metal structures for industry and construction.">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="assets/24.png">
     <link rel="stylesheet" href="styles.css">
-    <link
-        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;700&display=swap"
-        rel="stylesheet">
-    <!-- FontAwesome for icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&family=Inter:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/jpeg" href="assets/1.jpg">
 </head>
@@ -29,9 +30,9 @@
                 <li><a href="#services">Services</a></li>
                 <li><a href="#projects">Projects</a></li>
                 <li><a href="#about">About Us</a></li>
-                <li><a href="#contact" class="btn btn-primary">Contact</a></li>
+
             </ul>
-            <div class="menu-icon" id="menu-icon">
+            <div class="menu-icon" id="menu-icon" role="button" tabindex="0" aria-label="Toggle menu" aria-expanded="false">
                 <i class="fa-solid fa-bars"></i>
             </div>
         </div>
@@ -39,117 +40,112 @@
 
     <!-- Hero Section -->
     <section id="home" class="hero">
-        <div class="hero-bg"></div>
+        <div class="hero-bg" style="background-image: linear-gradient(to right, rgba(15,20,25,0.88) 0%, rgba(15,20,25,0.35) 100%), url('assets/24.png');"></div>
+        <canvas id="particles" class="particles-canvas" aria-hidden="true"></canvas>
         <div class="hero-content">
             <h1 class="hero-title">Forging the future in <span>Metal</span></h1>
             <p class="hero-subtitle">High-precision design, fabrication, and installation of metal structures for industry and construction.</p>
             <div class="hero-buttons">
-                <a href="#services" class="btn btn-primary btn-lg">Our Services <i
-                        class="fa-solid fa-arrow-right"></i></a>
-                <a href="#contact" class="btn btn-outline btn-lg">Get a Quote</a>
+                <a href="#services" class="btn btn-primary btn-lg">Our Services <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
         <div class="scroll-indicator">
-            <a href="#services"><i class="fa-solid fa-chevron-down"></i></a>
+            <a href="#services" aria-label="Scroll to services"><i class="fa-solid fa-chevron-down"></i></a>
         </div>
     </section>
 
     <!-- Services Section -->
     <section id="services" class="services section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-reveal="fade-up">
                 <h2 class="section-title">Our Specialties</h2>
                 <div class="divider"></div>
                 <p class="section-desc">Comprehensive metalmechanic solutions adapted to the highest demands of the industrial and construction sectors.</p>
             </div>
 
             <div class="services-grid">
-                <!-- Service 1 -->
                 <div class="service-card" style="--animation-delay: 0.1s;">
                     <div class="service-img">
-                        <img src="assets/roofing_specialized.png" alt="Roofing Installation">
+                        <img src="assets/24.png" alt="Specialized metal roofing installation">
                         <div class="service-icon"><i class="fa-solid fa-house-chimney"></i></div>
                     </div>
                     <div class="service-info">
                         <h3>Specialized Roofing</h3>
                         <p>Highly durable industrial and commercial metal roofing systems, designed to withstand the most extreme conditions and ensure total waterproofing.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <a href="#projects" class="service-link">See Projects <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <!-- Service 2 -->
                 <div class="service-card" style="--animation-delay: 0.2s;">
                     <div class="service-img">
-                        <img src="assets/industrial_metal.png" alt="Industrial Metal">
+                        <img src="assets/19.jpg" alt="Metal cladding on building facade">
                         <div class="service-icon"><i class="fa-solid fa-gears"></i></div>
                     </div>
                     <div class="service-info">
-                        <h3>Industrial Metal</h3>
-                        <p>Fabrication of precise metal components, piping, platforms, and equipment for production plants, mining, and refining.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <h3>Metal Cladding & Facades</h3>
+                        <p>Fabrication and installation of metal cladding systems for building facades, providing durability, aesthetics, and weather resistance.</p>
+                        <a href="#projects" class="service-link">See Projects <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <!-- Service 3 -->
                 <div class="service-card" style="--animation-delay: 0.3s;">
                     <div class="service-img">
-                        <img src="assets/metal_structures.png" alt="Metal Structures">
+                        <img src="assets/12.jpg" alt="Industrial metal roofing and flat roof">
                         <div class="service-icon"><i class="fa-solid fa-network-wired"></i></div>
                     </div>
                     <div class="service-info">
-                        <h3>Metal Structures</h3>
-                        <p>Structural design and fabrication of industrial buildings, bridges, and building frameworks, complying with strict safety standards.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <h3>Flat Roof Systems</h3>
+                        <p>Waterproof flat roofing solutions for commercial and industrial buildings, installed with precision and built to last decades.</p>
+                        <a href="#projects" class="service-link">See Projects <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <!-- Service 4: Fabricación -->
                 <div class="service-card" style="--animation-delay: 0.4s;">
                     <div class="service-img">
-                        <img src="assets/fabricacion_estructuras.png" alt="Metal Components Fabrication">
+                        <img src="assets/14.jpg" alt="Metal panel samples and components">
                         <div class="service-icon"><i class="fa-solid fa-industry"></i></div>
                     </div>
                     <div class="service-info">
-                        <h3>Component Fabrication</h3>
-                        <p>Transformation of sheet metal and plates into finished products. Solid structures and components to meet any construction demand.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <h3>Custom Metal Panels</h3>
+                        <p>Wide range of metal panel profiles and finishes. We fabricate custom panels to your exact specs — colours, sizes, and gauges tailored to your project.</p>
+                        <a href="#projects" class="service-link">See Projects <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <!-- Service 5: Metalmecánica -->
                 <div class="service-card" style="--animation-delay: 0.5s;">
                     <div class="service-img">
-                        <img src="assets/metalmecanica_precision.png" alt="Metalmechanic Engineering">
+                        <img src="assets/22.jpg" alt="Metal fabrication workshop">
                         <div class="service-icon"><i class="fa-solid fa-cogs"></i></div>
                     </div>
                     <div class="service-info">
-                        <h3>Metalmechanics</h3>
-                        <p>From simple parts to complex engineering systems. We offer high precision and advanced machinery.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <h3>Workshop Fabrication</h3>
+                        <p>State-of-the-art metal fabrication workshop. From simple parts to complex assemblies — we cut, bend, and finish with high-precision equipment.</p>
+                        <a href="#projects" class="service-link">See Projects <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
 
-                <!-- Service 6: Sheet Metal -->
                 <div class="service-card" style="--animation-delay: 0.6s;">
                     <div class="service-img">
-                        <img src="assets/sheet_metal_fabrication.png" alt="Sheet Metal Products Fabrication">
+                        <img src="assets/17.jpg" alt="Standing seam metal roof detail">
                         <div class="service-icon"><i class="fa-solid fa-layer-group"></i></div>
                     </div>
                     <div class="service-info">
-                        <h3>Sheet Metal Fabrication</h3>
-                        <p>We specifically work with sheet metal to create covers, duct systems, and custom flashings with perfect finishes.</p>
-                        <a href="#contact" class="service-link">Learn More <i class="fa-solid fa-arrow-right"></i></a>
+                        <h3>Standing Seam Roofing</h3>
+                        <p>Premium standing seam metal roof systems with concealed fasteners. Superior aesthetics and long-term performance for commercial and residential projects.</p>
+                        <a href="#projects" class="service-link">See Projects <i class="fa-solid fa-arrow-right"></i></a>
                     </div>
                 </div>
             </div>
         </div>
     </section>
 
+
+
     <!-- About Section -->
     <section id="about" class="about section">
         <div class="container">
             <div class="about-grid">
-                <div class="about-content">
+                <div class="about-content" data-reveal="fade-right">
                     <h2 class="section-title">About Everest Metal Fabrications</h2>
                     <div class="divider left"></div>
                     <p>At Everest Metal Fabrications, we are dedicated to fabricating and installing high-quality metal solutions. We are known for our transparent communication, punctuality, and commitment to every project.</p>
@@ -161,13 +157,9 @@
                         <li><i class="fa-solid fa-check"></i> Punctuality and commitment</li>
                     </ul>
                 </div>
-                <div class="about-image-wrapper">
+                <div class="about-image-wrapper" data-reveal="fade-left">
                     <div class="about-image">
-                        <img src="assets/11.jpg" alt="About our company">
-                    </div>
-                    <div class="experience-badge">
-                        <span>ISO</span>
-                        <span>9001</span>
+                        <img src="assets/18.jpg" alt="Everest Metal team installing roofing at construction site">
                     </div>
                 </div>
             </div>
@@ -177,80 +169,158 @@
     <!-- Safety Section -->
     <section class="safety-section section">
         <div class="container container-sm">
-            <div class="safety-icon">
+            <div class="safety-cats" data-reveal="fade-up">
+                <img src="assets/gato2.jpg" alt="Safety first — even the cats wear helmets" class="safety-cat-img">
+                <img src="assets/gato1.jpg" alt="Certified safety crew" class="safety-cat-img">
+            </div>
+            <div class="safety-icon" data-reveal="zoom-in">
                 <i class="fa-solid fa-hard-hat"></i>
             </div>
             <h2 class="safety-title">Safety First. Always.</h2>
             <div class="divider safety-divider"></div>
-            
-            <h3 class="safety-subtitle">
-                Before installing metal, we install safety.
-            </h3>
-            <p class="safety-text">
-                Certified equipment, clear procedures, and a total commitment to protection on every project.
-            </p>
-            <p class="safety-text">
-                At Everest Metal Fabrication, we work responsibly with practices that meet the highest safety standards in the industry.
-            </p>
+            <h3 class="safety-subtitle">Before installing metal, we install safety.</h3>
+            <p class="safety-text">Certified equipment, clear procedures, and a total commitment to protection on every project.</p>
+            <p class="safety-text">At Everest Metal Fabrication, we work responsibly with practices that meet the highest safety standards in the industry.</p>
         </div>
     </section>
 
     <!-- Projects Gallery Section -->
-    <section id="projects" class="projects section">
+    <section id="projects" class="projects section scrolly-section">
         <div class="container">
-            <div class="section-header">
+            <div class="section-header" data-reveal="fade-up">
                 <h2 class="section-title">Our Projects</h2>
                 <div class="divider"></div>
-                <p class="section-desc">Gallery of completed metalmechanics, industrial roofing, and certified structure projects.</p>
-            </div>
-
-            <div class="projects-grid">
-                <div class="project-item"><img src="assets/4.jpg" alt="Everest Project 4" loading="lazy"></div>
-                <div class="project-item"><img src="assets/5.jpg" alt="Everest Project 5" loading="lazy"></div>
-                <div class="project-item"><img src="assets/6.jpg" alt="Everest Project 6" loading="lazy"></div>
-                <div class="project-item"><img src="assets/7.jpg" alt="Everest Project 7" loading="lazy"></div>
-                <div class="project-item"><img src="assets/8.jpg" alt="Everest Project 8" loading="lazy"></div>
-                <div class="project-item"><img src="assets/9.jpg" alt="Everest Project 9" loading="lazy"></div>
-                <div class="project-item"><img src="assets/10.jpg" alt="Everest Project 10" loading="lazy"></div>
-                <div class="project-item"><img src="assets/11.jpg" alt="Everest Project 11" loading="lazy"></div>
+                <p class="section-desc">Scroll through our work — real projects, real results.</p>
             </div>
         </div>
+
+        <!-- Scrollytelling layout -->
+        <div class="scrolly-wrap">
+
+            <!-- Sticky image panel -->
+            <div class="scrolly-sticky-col">
+                <div class="scrolly-img-panel">
+                    <img id="scrolly-img" src="assets/24.png" alt="Project image" class="scrolly-main-img">
+                    <div class="scrolly-img-overlay">
+                        <span id="scrolly-tag" class="scrolly-tag">Roofing</span>
+                        <span id="scrolly-counter" class="scrolly-counter">01 / 10</span>
+                    </div>
+                    <div class="scrolly-progress-bar"><div id="scrolly-bar" class="scrolly-bar-fill"></div></div>
+                </div>
+            </div>
+
+            <!-- Scrollable steps -->
+            <div class="scrolly-steps-col">
+
+                <div class="scrolly-step active" data-img="assets/24.png" data-tag="Roofing" data-idx="1">
+                    <div class="scrolly-step-inner">
+                        <h3>Standing Seam Metal Roofing</h3>
+                        <p>Our crew installs premium standing seam systems with concealed fasteners — engineered for decades of performance and zero compromise on aesthetics.</p>
+                    </div>
+                </div>
+
+                <div class="scrolly-step" data-img="assets/12.jpg" data-tag="Flat Roof" data-idx="2">
+                    <div class="scrolly-step-inner">
+                        <h3>Commercial Flat Roof System</h3>
+                        <p>Full-membrane flat roof installations for large commercial footprints. Watertight seams, proper drainage, and fully certified waterproofing across every square foot.</p>
+                    </div>
+                </div>
+
+                <div class="scrolly-step" data-img="assets/19.jpg" data-tag="Cladding" data-idx="3">
+                    <div class="scrolly-step-inner">
+                        <h3>Metal Cladding Facade</h3>
+                        <p>Modern architectural cladding panels installed on multi-story residential buildings. Clean lines, durable finish, and weather-resistant performance that enhances curb appeal.</p>
+                    </div>
+                </div>
+
+                <div class="scrolly-step" data-img="assets/20.jpg" data-tag="Cladding" data-idx="4">
+                    <div class="scrolly-step-inner">
+                        <h3>Facade Installation with Aerial Lift</h3>
+                        <p>Multi-story facade work requires precision at height. Our team uses certified aerial equipment and follows strict safety protocols for every elevated installation.</p>
+                    </div>
+                </div>
+
+                <div class="scrolly-step" data-img="assets/18.jpg" data-tag="Roofing" data-idx="5">
+                    <div class="scrolly-step-inner">
+                        <h3>Roof Edge & Flashing Detail</h3>
+                        <p>Proper edge termination is critical to a watertight roof. We custom-fabricate flashings and edge trim to match each project — no off-the-shelf compromises.</p>
+                    </div>
+                </div>
+
+                <div class="scrolly-step" data-img="assets/17.jpg" data-tag="Roofing" data-idx="6">
+                    <div class="scrolly-step-inner">
+                        <h3>Standing Seam — Electrical Enclosure</h3>
+                        <p>Even utility enclosures deserve premium metalwork. This custom standing seam cap protects the electrical closet while matching the surrounding architecture perfectly.</p>
+                    </div>
+                </div>
+
+                <div class="scrolly-step" data-img="assets/4.jpg" data-tag="Roofing" data-idx="7">
+                    <div class="scrolly-step-inner">
+                        <h3>Industrial Roofing Installation</h3>
+                        <p>High-volume industrial roofing on large warehouse and production facilities. Our teams deploy efficiently without disrupting active operations on site.</p>
+                    </div>
+                </div>
+
+                <div class="scrolly-step" data-img="assets/14.jpg" data-tag="Panels" data-idx="8">
+                    <div class="scrolly-step-inner">
+                        <h3>Custom Metal Panel Selection</h3>
+                        <p>Every project starts with the right material. We stock and fabricate panels in a full range of profiles and finishes — from galvanized steel to Kynar-coated aluminium.</p>
+                    </div>
+                </div>
+
+                <div class="scrolly-step" data-img="assets/22.jpg" data-tag="Workshop" data-idx="9">
+                    <div class="scrolly-step-inner">
+                        <h3>In-House Fabrication Shop</h3>
+                        <p>Everything we install, we build. Our fully equipped workshop handles custom cuts, bends, and assemblies — ensuring every piece fits perfectly before it leaves the floor.</p>
+                    </div>
+                </div>
+
+                <div class="scrolly-step" data-img="assets/23.jpg" data-tag="Delivery" data-idx="10">
+                    <div class="scrolly-step-inner">
+                        <h3>Material Handling & Delivery</h3>
+                        <p>From our fabrication floor to your job site — we handle logistics in-house. Panels are bundled, protected, and delivered on schedule so your project never waits on us.</p>
+                    </div>
+                </div>
+
+            </div><!-- /scrolly-steps-col -->
+        </div><!-- /scrolly-wrap -->
     </section>
 
     <!-- FAQ Section -->
+
     <section class="faq section">
         <div class="container container-sm">
-            <div class="section-header">
+            <div class="section-header" data-reveal="fade-up">
                 <h2 class="section-title">Frequently Asked Questions</h2>
                 <div class="divider"></div>
                 <p class="section-desc">We answer your main questions before starting your project.</p>
             </div>
-            
+
             <div class="faq-list">
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
                         <h4>Do you work nationwide or just regionally?</h4>
-                        <i class="fa-solid fa-chevron-down"></i>
+                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" role="region">
                         <p>We have the logistics and infrastructure to develop and install projects nationwide. Please contact us to review viability at your specific location.</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
                         <h4>Do you offer warranties on roofing projects?</h4>
-                        <i class="fa-solid fa-chevron-down"></i>
+                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" role="region">
                         <p>Yes, we guarantee our work. The warranty period varies depending on the materials and scope of the roofing system (usually between 10 and 20 years for full waterproofing).</p>
                     </div>
                 </div>
                 <div class="faq-item">
-                    <div class="faq-question">
+                    <div class="faq-question" role="button" tabindex="0" aria-expanded="false">
                         <h4>Do your welders have certifications?</h4>
-                        <i class="fa-solid fa-chevron-down"></i>
+                        <i class="fa-solid fa-chevron-down" aria-hidden="true"></i>
                     </div>
-                    <div class="faq-answer">
+                    <div class="faq-answer" role="region">
                         <p>Absolutely. Our entire team holds international certifications (like AWS) and our company operates under ISO 9001 quality and safety management standards.</p>
                     </div>
                 </div>
@@ -258,69 +328,7 @@
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="contact section">
-        <div class="container">
-            <div class="contact-card">
-                <div class="contact-info">
-                    <h2>Let's Start Your Project</h2>
-                    <p>Do you have a structural project in mind or need industrial roofing solutions? Our engineering team is ready to advise you.</p>
 
-                    <div class="contact-details">
-                        <div class="contact-item">
-                            <i class="fa-solid fa-location-dot"></i>
-                            <div>
-                                <h4>Address</h4>
-                                <p>North Industrial Zone, Block A<br>Industrial City</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-solid fa-phone"></i>
-                            <div>
-                                <h4>Phone</h4>
-                                <p>+1 (555) 123-4567</p>
-                            </div>
-                        </div>
-                        <div class="contact-item">
-                            <i class="fa-solid fa-envelope"></i>
-                            <div>
-                                <h4>Email</h4>
-                                <p>info@everestmetal.com</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="contact-form-container">
-                    <form class="contact-form">
-                        <div class="form-group">
-                            <input type="text" id="name" class="form-input" required>
-                            <label for="name" class="form-label">Full Name</label>
-                        </div>
-                        <div class="form-group">
-                            <input type="email" id="email" class="form-input" required>
-                            <label for="email" class="form-label">Email Address</label>
-                        </div>
-                        <div class="form-group">
-                            <select id="service" class="form-input" required>
-                                <option value="" disabled selected></option>
-                                <option value="roofing">Specialized Roofing</option>
-                                <option value="estructuras">Metal Structures</option>
-                                <option value="industrial">Industrial Services</option>
-                                <option value="otro">Other</option>
-                            </select>
-                            <label for="service" class="form-label input-has-value">Service of Interest</label>
-                        </div>
-                        <div class="form-group">
-                            <textarea id="message" rows="4" class="form-input" required></textarea>
-                            <label for="message" class="form-label">Project Details</label>
-                        </div>
-                        <button type="button" class="btn btn-primary btn-block">Send Message</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -328,7 +336,7 @@
             <div class="footer-top">
                 <div class="footer-brand">
                     <a href="#" class="logo">
-                        <img src="assets/1.jpg" alt="Everest Logo" class="logo-img">
+                        <img src="assets/100.jpg" alt="Everest Logo" class="logo-img" style="height:36px;">
                         <span class="logo-text">EVEREST<span class="logo-accent">METAL</span></span>
                     </a>
                     <p>Excellence and precision in metal structures for the most challenging projects.</p>
@@ -340,15 +348,15 @@
                         <li><a href="#services">Services</a></li>
                         <li><a href="#projects">Projects</a></li>
                         <li><a href="#about">About Us</a></li>
-                        <li><a href="#contact">Contact</a></li>
+
                     </ul>
                 </div>
                 <div class="footer-social">
                     <h4>Follow Us</h4>
                     <div class="social-icons">
-                        <a href="#"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/company/everestmetal-fabrications" target="_blank" rel="noopener" aria-label="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/everestmetalfabricationsltd/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=61573974865537" target="_blank" rel="noopener" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
                     </div>
                 </div>
             </div>
@@ -362,10 +370,23 @@
         </div>
     </footer>
 
-    <!-- WhatsApp Floating Button -->
-    <a href="https://wa.me/15551234567" class="whatsapp-float" target="_blank" aria-label="Contact via WhatsApp">
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox-close" id="lightbox-close" aria-label="Close">&times;</button>
+        <button class="lightbox-prev" id="lightbox-prev" aria-label="Previous image">&#8249;</button>
+        <button class="lightbox-next" id="lightbox-next" aria-label="Next image">&#8250;</button>
+        <img src="" alt="" id="lightbox-img">
+        <div class="lightbox-counter" id="lightbox-counter"></div>
+    </div>
+
+    <a href="https://wa.me/14163027549" class="whatsapp-float" target="_blank" rel="noopener noreferrer" aria-label="Contact via WhatsApp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
+
+    <!-- Scroll to Top -->
+    <button class="scroll-top" id="scroll-top" aria-label="Back to top">
+        <i class="fa-solid fa-chevron-up"></i>
+    </button>
 
     <script src="script.js"></script>
 </body>
