@@ -6,6 +6,20 @@ document.addEventListener('DOMContentLoaded', () => {
         navbar.classList.toggle('scrolled', window.scrollY > 50);
     }, { passive: true });
 
+    // ─── Scroll Lock Helper (prevents layout shift) ───────────────────
+    const lockScroll = () => {
+        const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth;
+        document.body.style.paddingRight = `${scrollbarWidth}px`;
+        navbar.style.paddingRight = `${scrollbarWidth}px`;
+        document.body.style.overflow = 'hidden';
+    };
+
+    const unlockScroll = () => {
+        document.body.style.paddingRight = '';
+        navbar.style.paddingRight = '';
+        document.body.style.overflow = '';
+    };
+
     // ─── Mobile Menu Toggle ─────────────────────────────────────────
     const menuIcon = document.getElementById('menu-icon');
     const navLinks = document.querySelector('.nav-links');
@@ -16,7 +30,11 @@ document.addEventListener('DOMContentLoaded', () => {
         i.classList.toggle('fa-bars',  !isOpen);
         i.classList.toggle('fa-xmark',  isOpen);
         menuIcon.setAttribute('aria-expanded', isOpen);
-        document.body.style.overflow = isOpen ? 'hidden' : '';
+        if (isOpen) {
+            lockScroll();
+        } else {
+            unlockScroll();
+        }
     };
 
     menuIcon.addEventListener('click', toggleMenu);
@@ -29,7 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
             navLinks.classList.remove('active');
             menuIcon.querySelector('i').classList.replace('fa-xmark', 'fa-bars');
             menuIcon.setAttribute('aria-expanded', 'false');
-            document.body.style.overflow = '';
+            unlockScroll();
         });
     });
 
@@ -220,13 +238,13 @@ document.addEventListener('DOMContentLoaded', () => {
         lightboxImg.alt = img.alt;
         lightboxCounter.textContent = `${index + 1} / ${projectItems.length}`;
         lightbox.classList.add('active');
-        document.body.style.overflow = 'hidden';
+        lockScroll();
         lightboxClose.focus();
     };
 
     const closeLightbox = () => {
         lightbox.classList.remove('active');
-        document.body.style.overflow = '';
+        unlockScroll();
     };
 
     const navigate = (dir) => {

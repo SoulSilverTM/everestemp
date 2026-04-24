@@ -1422,28 +1422,116 @@ select.form-input option {
         left: -100%;
         width: 100%;
         height: calc(100dvh - var(--nav-height));
-        background: rgba(10, 10, 12, 0.98);
-        backdrop-filter: blur(12px);
-        -webkit-backdrop-filter: blur(12px);
+        /* Rich layered background */
+        background: linear-gradient(160deg, rgba(8,12,18,0.99) 0%, rgba(15,22,32,0.99) 100%);
+        backdrop-filter: blur(20px);
+        -webkit-backdrop-filter: blur(20px);
+        border-top: 1px solid rgba(92,172,196,0.12);
         flex-direction: column;
         justify-content: center;
-        align-items: center;
+        align-items: stretch;
         gap: 0;
-        transition: left 0.35s cubic-bezier(0.25, 0.8, 0.25, 1);
+        padding: 0 8%;
+        transition: left 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
         overflow-y: auto;
     }
     .nav-links.active { left: 0; }
-    .nav-links li { width: 100%; text-align: center; }
+
+    /* Each li takes full width, left-aligned */
+    .nav-links li {
+        width: 100%;
+        text-align: left;
+        border-bottom: 1px solid rgba(255,255,255,0.05);
+        opacity: 0;
+        transform: translateX(-24px);
+        transition: opacity 0.4s ease, transform 0.4s ease, background 0.25s ease;
+    }
+    /* Stagger animation when menu opens */
+    .nav-links.active li:nth-child(1) { opacity: 1; transform: none; transition-delay: 0.08s; }
+    .nav-links.active li:nth-child(2) { opacity: 1; transform: none; transition-delay: 0.14s; }
+    .nav-links.active li:nth-child(3) { opacity: 1; transform: none; transition-delay: 0.20s; }
+    .nav-links.active li:nth-child(4) { opacity: 1; transform: none; transition-delay: 0.26s; }
+    .nav-links.active li:nth-child(5) { opacity: 1; transform: none; transition-delay: 0.32s; }
+    .nav-links.active li:nth-child(6) { opacity: 1; transform: none; transition-delay: 0.40s; }
+
+    /* Regular links */
     .nav-links li a:not(.btn) {
-        display: block;
-        padding: 18px 20px;
-        font-size: 1.2rem;
-        letter-spacing: 2px;
-        /* Larger touch target */
-        min-height: 56px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        padding: 20px 0;
+        font-size: 1.25rem;
+        font-weight: 600;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: rgba(220,235,242,0.75);
+        transition: color 0.25s ease, padding-left 0.25s ease;
+        min-height: 64px;
+    }
+    .nav-links li a:not(.btn) i {
+        width: 36px;
+        height: 36px;
+        background: rgba(92,172,196,0.1);
+        border: 1px solid rgba(92,172,196,0.2);
+        border-radius: 10px;
         display: flex;
         align-items: center;
         justify-content: center;
+        font-size: 0.9rem;
+        color: var(--accent-primary);
+        flex-shrink: 0;
+        transition: background 0.25s ease, border-color 0.25s ease;
+    }
+    .nav-links li a:not(.btn):hover {
+        color: #fff;
+        padding-left: 6px;
+    }
+    .nav-links li a:not(.btn):hover i {
+        background: rgba(92,172,196,0.25);
+        border-color: rgba(92,172,196,0.5);
+    }
+    /* Remove underline animation on mobile */
+    .nav-links li a:not(.btn)::after { display: none; }
+
+    /* Contact Us button row */
+    .nav-contact-li {
+        border-bottom: none !important;
+        padding: 28px 0 20px;
+    }
+    .nav-contact-btn {
+        display: inline-flex !important;
+        width: 100%;
+        justify-content: center;
+        font-size: 1rem !important;
+        padding: 16px 28px !important;
+        border-radius: 8px !important;
+        letter-spacing: 0.1em !important;
+        gap: 10px !important;
+    }
+
+    /* Mobile brand footer strip */
+    .nav-mobile-brand {
+        border-bottom: none !important;
+        padding: 24px 0 8px;
+        text-align: center !important;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 4px;
+    }
+    .nav-mobile-brand span {
+        font-family: var(--font-heading);
+        font-size: 1.1rem;
+        font-weight: 800;
+        letter-spacing: 2px;
+        color: rgba(255,255,255,0.35);
+        text-transform: uppercase;
+    }
+    .nav-mobile-brand p {
+        font-size: 0.72rem;
+        letter-spacing: 0.1em;
+        color: rgba(255,255,255,0.2);
+        text-transform: uppercase;
     }
     .menu-icon {
         display: block;
@@ -1456,7 +1544,7 @@ select.form-input option {
     }
 
     /* Hero — mobile: solid scroll, better layout */
-    .section { padding: 60px 0; }
+    .section { padding: 80px 0; }
     .hero {
         min-height: 100dvh;
         padding: 0 6%;
@@ -1481,7 +1569,7 @@ select.form-input option {
         line-height: 1.15;
         margin-bottom: 16px;
     }
-    .hero-subtitle { font-size: 1rem; margin-bottom: 32px; }
+    .hero-subtitle { font-size: 1rem; margin-bottom: 32px; padding: 0 10px; }
     .hero-buttons {
         flex-direction: column;
         align-items: center;
@@ -1499,8 +1587,9 @@ select.form-input option {
     .section-desc { font-size: 0.95rem; }
 
     /* Services */
-    .services-grid { grid-template-columns: 1fr; gap: 16px; }
-    .service-img { height: 300px; }
+    .services-grid { grid-template-columns: 1fr; gap: 30px; }
+    .service-img { height: 420px; }
+    .service-info { padding: 40px 20px 20px; }
     /* Disable shimmer on touch — no hover events */
     .service-card::after { display: none; }
 
@@ -1552,12 +1641,12 @@ select.form-input option {
     /* WhatsApp & Scroll-top */
     .whatsapp-float {
         width: 52px; height: 52px;
-        bottom: 18px; right: 18px;
+        bottom: 20px; right: 20px;
         font-size: 28px;
     }
     .scroll-top {
         width: 42px; height: 42px;
-        bottom: 82px; right: 18px;
+        bottom: 95px; right: 25px;
         font-size: 0.9rem;
     }
 
@@ -1572,7 +1661,7 @@ select.form-input option {
 @media (max-width: 480px) {
     :root { --nav-height: 56px; }
 
-    .container { padding: 0 4%; }
+    .container { padding: 0 6%; }
 
     .hero-title { font-size: clamp(1.7rem, 8vw, 2rem); }
     .hero-subtitle { font-size: 0.92rem; }
@@ -1585,7 +1674,7 @@ select.form-input option {
     }
     .project-item:nth-child(1) { grid-column: span 1; }
 
-    .service-img { height: 180px; }
+    .service-img { height: 400px; }
 
     .safety-title { font-size: 1.5rem; }
     .safety-subtitle { font-size: 1rem; }
