@@ -284,7 +284,8 @@ img {
 .hero {
     position: relative;
     height: 100vh;
-    min-height: 600px;
+    height: 100dvh;
+    min-height: 580px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -300,12 +301,19 @@ img {
     height: 100%;
     background-image: linear-gradient(to right, rgba(15, 20, 25, 0.9) 0%, rgba(15, 20, 25, 0.4) 100%), url('assets/2.jpg');
     background-size: cover;
-    background-position: center;
+    background-position: center center;
     background-attachment: fixed;
     z-index: -1;
     will-change: transform;
-    transform: scale(1.05);
     animation: slowZoom 20s infinite alternate linear;
+}
+
+/* Disable fixed attachment on touch devices — broken on iOS/Android */
+@media (hover: none), (pointer: coarse) {
+    .hero-bg {
+        background-attachment: scroll;
+        animation: slowZoom 20s infinite alternate linear;
+    }
 }
 
 @keyframes slowZoom {
@@ -314,7 +322,7 @@ img {
     }
 
     100% {
-        transform: scale(1.1);
+        transform: scale(1.08);
     }
 }
 
@@ -1103,12 +1111,7 @@ select.form-input option {
     .safety-cat-img { width: 120px; height: 120px; }
 }
 
-/* Fix parallax on iOS / touch devices */
-@media (hover: none) and (pointer: coarse) {
-    .hero-bg {
-        background-attachment: scroll;
-    }
-}
+/* (parallax fix is handled above with the hero-bg rule) */
 
 /* --- Lightbox --- */
 .lightbox {
@@ -1353,15 +1356,48 @@ select.form-input option {
         padding: 18px 20px;
         font-size: 1.2rem;
         letter-spacing: 2px;
+        /* Larger touch target */
+        min-height: 56px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
-    .menu-icon { display: block; }
+    .menu-icon {
+        display: block;
+        /* Ensure large enough tap target */
+        min-width: 44px;
+        min-height: 44px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
 
-    /* Hero */
+    /* Hero — mobile: solid scroll, better layout */
     .section { padding: 60px 0; }
-    .hero { min-height: 100dvh; padding: 0 6%; text-align: center; }
-    .hero-content { text-align: center; margin: 0 auto; }
-    .hero-bg { background-attachment: scroll; }
-    .hero-title { font-size: 2.4rem; line-height: 1.15; margin-bottom: 16px; }
+    .hero {
+        min-height: 100dvh;
+        padding: 0 6%;
+        text-align: center;
+        /* Add padding-top so content is below nav */
+        padding-top: calc(var(--nav-height) + 20px);
+        align-items: center;
+    }
+    .hero-content {
+        text-align: center;
+        margin: 0 auto;
+        /* Center vertically with a slight upward offset */
+        padding-bottom: 60px;
+    }
+    /* hero-bg parallax is already disabled via (hover:none) rule above */
+    .hero-bg {
+        /* On mobile, keep image well-centered on the subject */
+        background-position: 60% center;
+    }
+    .hero-title {
+        font-size: clamp(1.9rem, 7vw, 2.5rem);
+        line-height: 1.15;
+        margin-bottom: 16px;
+    }
     .hero-subtitle { font-size: 1rem; margin-bottom: 32px; }
     .hero-buttons {
         flex-direction: column;
@@ -1370,6 +1406,9 @@ select.form-input option {
     }
     .hero-buttons .btn { width: 100%; max-width: 320px; justify-content: center; }
     .btn-lg { padding: 14px 28px; font-size: 1rem; }
+
+    /* Scroll indicator — hide on very small screens to save space */
+    .scroll-indicator { bottom: 16px; }
 
     /* Section typography */
     .section-title { font-size: 1.8rem; }
@@ -1380,6 +1419,8 @@ select.form-input option {
     .services-grid { grid-template-columns: 1fr; gap: 20px; }
     .service-img { height: 200px; }
     .service-info { padding: 36px 22px 24px; }
+    /* Disable shimmer on touch — no hover events */
+    .service-card::after { display: none; }
 
     /* About */
     .about-grid { grid-template-columns: 1fr; gap: 32px; }
@@ -1451,7 +1492,7 @@ select.form-input option {
 
     .container { padding: 0 4%; }
 
-    .hero-title { font-size: 2rem; }
+    .hero-title { font-size: clamp(1.7rem, 8vw, 2rem); }
     .hero-subtitle { font-size: 0.92rem; }
 
     .section-title { font-size: 1.6rem; }
@@ -1474,6 +1515,10 @@ select.form-input option {
 
     .btn { font-size: 0.9rem; padding: 12px 20px; }
     .btn-lg { padding: 13px 20px; font-size: 0.95rem; }
+
+    /* Scrolly: tighter on very small screens */
+    .scrolly-section > .container { margin-bottom: 1.5rem; }
+    .scrolly-steps-col { padding: 1.5rem 4% 5rem; }
 }
 
 /* =============================================
@@ -1968,39 +2013,85 @@ select.form-input option {
     color: #c5d5e0;
 }
 
-/* ─── Responsive ─────────────────────────────────── */
+/* ─── Scrollytelling: Responsive ────────────────────── */
+
+/* Tablet / small laptop: stack vertically */
 @media (max-width: 860px) {
     .scrolly-wrap {
         flex-direction: column;
     }
+
+    /* On tablet/mobile the image becomes sticky at the TOP */
     .scrolly-sticky-col {
-        position: relative;
+        position: sticky;
+        top: var(--nav-height);
         width: 100%;
-        height: 56vw;
-        min-height: 280px;
-        top: 0;
+        /* Show a nice tall image — portrait-ish ratio */
+        height: 52vw;
+        min-height: 300px;
+        max-height: 460px;
+        z-index: 10;
     }
+
     .scrolly-steps-col {
         padding: 2rem 5% 6rem;
         gap: 0;
     }
+
+    /* Steps: a bit shorter since the image is above */
     .scrolly-step {
-        min-height: 40vh;
+        min-height: 45vh;
         padding-left: 1.25rem;
+    }
+
+    /* On mobile, always show the step content at full opacity
+       since the image is visible above it at all times */
+    .scrolly-step {
+        opacity: 0.5;
+        transform: none;
+    }
+    .scrolly-step.active {
+        opacity: 1;
     }
 }
 
-@media (max-width: 520px) {
+/* Mobile phones */
+@media (max-width: 620px) {
     .scrolly-sticky-col {
-        height: 68vw;
+        height: 60vw;
         min-height: 240px;
+        max-height: 360px;
     }
+
     .scrolly-step {
-        min-height: 35vh;
+        min-height: 38vh;
+        padding: 2rem 0;
+        padding-left: 1rem;
     }
-    .scrolly-step-inner h3 { font-size: 1.2rem; }
-    .scrolly-step-inner p  { font-size: 0.9rem; }
+
+    .scrolly-step-inner h3 {
+        font-size: 1.15rem;
+        margin-bottom: 0.6rem;
+    }
+    .scrolly-step-inner p {
+        font-size: 0.88rem;
+        line-height: 1.65;
+    }
     .scrolly-tag   { font-size: 0.62rem; }
     .scrolly-counter { font-size: 0.75rem; }
+
+    /* Progress bar slightly thicker for visibility */
+    .scrolly-progress-bar { height: 4px; }
+}
+
+/* Very small phones (≤ 390px) */
+@media (max-width: 390px) {
+    .scrolly-sticky-col {
+        height: 65vw;
+        min-height: 200px;
+    }
+    .scrolly-step { min-height: 32vh; }
+    .scrolly-step-inner h3 { font-size: 1.05rem; }
+    .scrolly-step-inner p  { font-size: 0.82rem; }
 }
 

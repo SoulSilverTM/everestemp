@@ -324,6 +324,10 @@ document.addEventListener('DOMContentLoaded', () => {
         // Trigger first step immediately
         swapImage(scrollySteps[0]);
 
+        // On mobile the image is sticky at the top and steps are below it.
+        // A lower threshold + less negative bottom margin ensures reliable triggering.
+        const isMobile = window.matchMedia('(max-width: 860px)').matches;
+
         const stepObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
@@ -333,12 +337,24 @@ document.addEventListener('DOMContentLoaded', () => {
                     swapImage(entry.target);
                 }
             });
-        }, {
+        }, isMobile ? {
+            // Mobile: trigger when 20% of the step enters the viewport centre
+            threshold: 0.2,
+            rootMargin: '-5% 0px -50% 0px',
+        } : {
+            // Desktop: trigger at mid-point of viewport
             threshold: 0.5,
             rootMargin: '-10% 0px -40% 0px',
         });
 
         scrollySteps.forEach(step => stepObserver.observe(step));
+
+        // Re-evaluate if viewport size changes (e.g. orientation flip)
+        window.matchMedia('(max-width: 860px)').addEventListener('change', (e) => {
+            // Reload page on orientation change to reinitialise observer
+            // (lightweight approach — avoids complex observer teardown)
+            if (e.matches !== isMobile) location.reload();
+        });
     }
 });
 
